@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var songsController = require('../controllers/songsController'); 
+var albumsController = require('../controllers/albumsController'); 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', albumsController.list);
+
+router.get('/results', songsController.results);
 
 module.exports = router;
