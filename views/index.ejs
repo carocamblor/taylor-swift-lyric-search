@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include('head') %>
   <body>
     <%- include('nav') %>
-    <h1>Taylor Swift Lyric Search</h1>
+    <main class="albumContainer">
     <% for (const album of albums) { %>
-      <h2><%= album.title %></h2>
+      <article class="album">
+        <a class="albumLink">
+          <img src="images/<%= album.img %>" class="albumCover">
+        </a>
+      </article>
     <% } %>
+    
+  </main>
   </body>
 </html>

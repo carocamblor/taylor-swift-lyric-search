@@ -1,8 +1,90 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+body {
+  margin: 0;
+  background-color: #c9e8fd;
+}
+
+nav {
+  display: grid;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+form input {
+  width: 50%;
+  padding: 12px 20px;
+  font-family: system-ui;
+}
+
+form button img {
+  height: 30px;
+  width: 30px;
+}
+
+h1.title {
+  font-family: system-ui;
+  color: #526d85;
+  justify-content: center;
+  display: flex;
+  margin: 20px 0 0 0;
+  font-size: xxx-large;
+}
+
+main.albumContainer {
+  width: 100vw;
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+article.album {
+  width: 100%;
+}
+
+a.albumLink {
+  display: block;
+  width: 100%;
+  height: 100%
+}
+
+img.albumCover {
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img.albumCover:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+}
+
+h2.resultsTitle {
+  display: flex;
+  justify-content: center;
+  font-family: system-ui;
+  font-size: xx-large;
+}
+
+main.results {
+  display: grid;
+  justify-content: center;
+  font-family: system-ui;
+
+}
+
+h3, p {
+  display: flex;
+    justify-content: center;
+}
+
+hr {
+  background-color: #526d85;
+  height: 1px;
+  border: 0;
 }
