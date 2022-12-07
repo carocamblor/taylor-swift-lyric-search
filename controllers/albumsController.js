@@ -6,8 +6,8 @@ var albumsController = {
         res.render('index', {albums})
     },
     detail: function (req, res) {
-        let album = albums.filter((album) => album.title.toLowerCase() == req.params.album)
-        res.render('detail', {album})
+        let album = albums.filter((album) => album.id == req.params.id)[0]
+        res.render('album', {album})
     },
 }
 

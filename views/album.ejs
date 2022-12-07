@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <%- include('head') %>
+<body>
+    <%- include('nav') %>
+    <main class="detail">
+      <section class="albumInfo">
+        <img src="/images/<%= album.img %>" class="albumCover">
+        <article>
+          <h2 class="albumTitle"><%= album.title %></h2>
+          <div class="infoContainer">
+            <p class="infoTitle">Released </p>
+            <p class="info"><%= album.date %></p>
+          </div>
+        </article>
+      </section>
+      
+      <section class="tracklist">
+        <% for (const song of album.songs) { %>
+          <a href="/song/<%= song.id %>" class="songLink"><p class="songTitle"><%= album.songs.indexOf(song)+1 + '. ' + song.title %></p></a>
+        <% } %>
+      </section>
+    </main>
+</body>
+</html>

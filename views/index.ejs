@@ -6,8 +6,8 @@
     <main class="albumContainer">
     <% for (const album of albums) { %>
       <article class="album">
-        <a class="albumLink">
-          <img src="images/<%= album.img %>" class="albumCover">
+        <a class="albumLink" href="/album/<%= album.id %>">
+          <img src="/images/<%= album.img %>" class="albumCover">
         </a>
       </article>
     <% } %>

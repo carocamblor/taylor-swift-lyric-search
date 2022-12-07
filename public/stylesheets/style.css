@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: system-ui;
 }
 
 body {
@@ -108,6 +109,35 @@ article p.album {
   font-weight: 500;
 }
 
+main.detail {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+section.albumInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+  gap: 20px;
+  width: 50%;
+  justify-self: center;
+}
+
+div.infoContainer p {
+  text-align: left;
+  justify-content: left;
+  padding: 0;
+}
+
+section.tracklist p.songTitle {
+  color: black;
+  text-decoration-color: black;
+}
+
+h2.songTitle {
+  text-align: center;
+}
+
 @media only screen and (max-width: 420px) {
 
   main.albumContainer {
@@ -129,6 +159,10 @@ article p.album {
 
   h2.resultsTitle {
     font-size: x-large;
+  }
+
+  section.albumInfo {
+    width: 100%;
   }
 
 }

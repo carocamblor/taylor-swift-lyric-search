@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <%- include('head') %>
+<body>
+    <%- include('nav') %>
+    <main class="song">
+          <h2 class="songTitle"><%= song.title %></h2>
+      <section class="songLyrics">
+        <% for (const lyric of song.lyrics) { %>
+          <p class="lyric"><%= lyric %></p>
+        <% } %>
+      </section>
+    </main>
+</body>
+</html>

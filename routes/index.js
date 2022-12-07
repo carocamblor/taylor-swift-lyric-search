@@ -7,6 +7,8 @@ router.get('/', albumsController.list);
 
 router.get('/results', songsController.results);
 
-router.get('/album/:album', albumsController.detail);
+router.get('/album/:id', albumsController.detail);
+
+router.get('/song/:id', songsController.detail);
 
 module.exports = router;

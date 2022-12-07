@@ -5,7 +5,7 @@ const { signedCookie } = require('cookie-parser');
 var songsController = {
     results: function (req, res) {
 
-        let songsR = songs.filter((song) => song.lyrics.some((lyric) => lyric.toLowerCase().includes(req.query.search.toLowerCase())))
+        let songsR = songs.list.filter((song) => song.lyrics.some((lyric) => lyric.toLowerCase().includes(req.query.search.toLowerCase())))
        
         let results = [];
 
@@ -22,6 +22,10 @@ var songsController = {
         }
 
         res.render('results', { results, search: req.query.search})
+    },
+    detail: function (req, res) {
+        let song = songs.list.filter((song) => song.id == req.params.id)[0]
+        res.render('song', {song})
     }
 }
 
