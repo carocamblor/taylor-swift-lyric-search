@@ -5,12 +5,12 @@ const { signedCookie } = require('cookie-parser');
 var songsController = {
     results: function (req, res) {
 
-        let songsR = songs.filter((song) => song.lyrics.some((lyric) => lyric.includes(req.query.search)))
+        let songsR = songs.filter((song) => song.lyrics.some((lyric) => lyric.toLowerCase().includes(req.query.search.toLowerCase())))
        
         let results = [];
 
         for (let song of songsR) {
-            let lyrics = song.lyrics.filter((lyric) => lyric.includes(req.query.search))
+            let lyrics = song.lyrics.filter((lyric) => lyric.toLowerCase().includes(req.query.search.toLowerCase()))
             for (const lyric of lyrics) {
                 results.push({
                     song: song,

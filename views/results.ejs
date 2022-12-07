@@ -3,16 +3,22 @@
   <%- include('head') %>
 <body>
     <%- include('nav') %>
-    <h2 class="resultsTitle">Showing results for "<%= search %> "</h2>
     <main class="results">
+    <% if (results.length !== 0) { %>
+      <h2 class="resultsTitle">Showing results for "<%= search %>"</h2>
+      <h3 class="resultsAmount"><%= results.length %> lyrics match your search</h3>
+      
     <% for (const song of results) { %>
       <article>
+        <hr>
         <h3><%= song.song.title %></h3>
         <p><%= song.lyrics %></p>
         <p><%= song.nextLyric %></p>
-        <p><%= song.song.album %></p>
-        <hr>
+        <p class="album"><%= song.song.album %></p>
       </article>
+    <% } %>
+    <% } else { %>
+      <p>We did not find a song that contains "<%= search %>"</p>
     <% } %>
   </main>
 </body>

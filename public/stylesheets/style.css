@@ -21,11 +21,19 @@ form input {
   width: 50%;
   padding: 12px 20px;
   font-family: system-ui;
+  border-radius: 0;
+  border: 0;
+}
+
+form button {
+  background: #526d85;
+  border: 0;
+  width: 45px;
 }
 
 form button img {
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
 }
 
 h1.title {
@@ -75,16 +83,52 @@ main.results {
   display: grid;
   justify-content: center;
   font-family: system-ui;
-
+  grid-template-columns: 1fr;
 }
 
 h3, p {
   display: flex;
-    justify-content: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+h3.resultsAmount {
+  margin: 0 0 20px 0
 }
 
 hr {
   background-color: #526d85;
   height: 1px;
   border: 0;
+}
+
+article p.album {
+  color: #526d85;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 420px) {
+
+  main.albumContainer {
+    grid-template-columns: 1fr;
+  }
+
+  h1.title {
+    font-family: system-ui;
+    color: #526d85;
+    justify-content: center;
+    display: flex;
+    margin: 20px 0 0 0;
+    font-size: xx-large;
+  }
+
+  form input {
+    width: 70%;
+  }
+
+  h2.resultsTitle {
+    font-size: x-large;
+  }
+
 }
