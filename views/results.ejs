@@ -11,11 +11,15 @@
     <% for (const song of results) { %>
       <article>
         <hr>
-        <h3><%= song.song.title %></h3>
-        <p><%= song.lyrics %></p>
-        <p><%= song.nextLyric %></p>
-        <p class="album"><%= song.song.album %></p>
-      </article>
+        <a class="resultsLink" href="/song/<%= song.song.id %>">
+          <h3><%= song.song.title %></h3>
+          <p><%= song.lyrics %></p>
+          <p><%= song.nextLyric %></p>
+        </a>
+        <a class="resultsLink" href="/album/<%= song.song.album_id %>">
+          <p class="album"><%= song.song.album %></p>
+        </a>
+        </article>
     <% } %>
     <% } else { %>
       <p>We did not find a song that contains "<%= search %>"</p>

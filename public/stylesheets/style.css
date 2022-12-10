@@ -87,6 +87,11 @@ main.results {
   grid-template-columns: 1fr;
 }
 
+a.resultsLink {
+  text-decoration: none;
+  color: black;
+}
+
 h3, p {
   display: flex;
   justify-content: center;
@@ -131,6 +136,9 @@ div.infoContainer p {
 
 section.tracklist p.songTitle {
   color: black;
+}
+
+section.tracklist a {
   text-decoration-color: black;
 }
 
