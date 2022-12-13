@@ -1345,6 +1345,11 @@ const songs = {
         findByAlbum: function (album_id) {
             let results = songs.list.filter((song) => song.album_id == album_id);
             return results;
+        },
+        findByAlbums: function (ids) {
+            let results = songs.list.filter((song) => ids.includes(song.album_id));
+            return results;
+            
         }
     
 }

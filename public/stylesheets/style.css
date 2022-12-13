@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: system-ui;
+  font-family: revert
 }
 
 body {
@@ -15,13 +15,19 @@ nav {
 
 form {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
-form input {
-  width: 50%;
+section.searchBar {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+form input.searchInput {
+  width: 90%;
   padding: 12px 20px;
-  font-family: system-ui;
+  font-family: revert;
   border-radius: 0;
   border: 0;
 }
@@ -30,6 +36,20 @@ form button {
   background: #526d85;
   border: 0;
   width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.filter {
+  width: 15%;
+  color: white;
+  font-size: medium;
+  font-weight: 500;
+}
+
+button.filter p {
+  margin: 10px
 }
 
 form button img {
@@ -37,17 +57,47 @@ form button img {
   width: 25px;
 }
 
+div.modal-content {
+  border-radius: 0px;
+  font-family: revert;
+}
+
+span.checklistElement label, span.checklistElement input {
+  display: inline;
+}
+
+form section.checklist {
+  display: grid;
+  gap: 10px;
+}
+
+div.modal-footer button {
+  width: 15%;
+  border-radius: 0px;
+  background-color: #b8acd1;
+  border: 0px;
+}
+
+div.modal-footer button:hover {
+  background-color: #6e618b;
+}
+
+input[type=checkbox] {
+  accent-color: #6e618b;
+  border-radius: 0px;
+}
+
 h1.title {
-  font-family: system-ui;
+  font-family: revert;
   color: #526d85;
   justify-content: center;
   display: flex;
   margin: 20px 0 0 0;
   font-size: xxx-large;
+  font-weight: 700;
 }
 
 main.albumContainer {
-  width: 100vw;
   padding: 20px;
   display: grid;
   gap: 20px;
@@ -76,14 +126,16 @@ img.albumCover:hover {
 h2.resultsTitle {
   display: flex;
   justify-content: center;
-  font-family: system-ui;
+  font-family: revert;
   font-size: xx-large;
+  font-weight: 700;
+  margin: 27px 0px
 }
 
 main.results {
   display: grid;
   justify-content: center;
-  font-family: system-ui;
+  font-family: revert;
   grid-template-columns: 1fr;
 }
 
@@ -99,14 +151,28 @@ h3, p {
   padding: 0 20px;
 }
 
+main.results p {
+  margin: 16px 0px;
+}
+
+h3 {
+  font-size: large;
+  font-weight: 700;
+}
+
 h3.resultsAmount {
   margin: 0 0 20px 0
+}
+
+h3.songTitle {
+  margin: 20px 0px;
 }
 
 hr {
   background-color: #526d85;
   height: 1px;
   border: 0;
+  margin: 8px 0px;
 }
 
 article p.album {
@@ -144,6 +210,10 @@ section.tracklist a {
 
 h2.songTitle {
   text-align: center;
+  text-align: center;
+  font-family: revert;
+  margin: 20px;
+  font-weight: 700;
 }
 
 @media only screen and (max-width: 420px) {
@@ -153,16 +223,12 @@ h2.songTitle {
   }
 
   h1.title {
-    font-family: system-ui;
+    font-family: revert;
     color: #526d85;
     justify-content: center;
     display: flex;
     margin: 20px 0 0 0;
     font-size: xx-large;
-  }
-
-  form input {
-    width: 70%;
   }
 
   h2.resultsTitle {
@@ -171,6 +237,10 @@ h2.songTitle {
 
   section.albumInfo {
     width: 100%;
+  }
+
+  div.modal-footer button {
+    width: 20%;
   }
 
 }

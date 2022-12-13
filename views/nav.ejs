@@ -2,9 +2,73 @@
     <h1 class="title">Taylor Swift Lyric Search</h1>
     <br>
     <form action="/results" method="GET">
-        <input type="search" name="search">
-        <button type="submit">
-            <img src="/images/search-icon.png" alt="search">
+        <section class="searchBar">
+            <input class="searchInput" type="search" name="search">
+            <button type="submit">
+                <img src="/images/search-icon.png" alt="search">
+            </button>
+        </section>
+        <button class="filter" type="button" data-toggle="modal" data-target="#exampleModal">
+            <p>Filter</p>
         </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Search for lyrics in:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <section class="checklist">
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="midnights">
+                        <label>Midnights</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="evermore">
+                        <label>evermore</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="folklore">
+                        <label>folklore</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="lover">
+                        <label>Lover</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="reputation">
+                        <label>reputation</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="1989">
+                        <label>1989</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="red">
+                        <label>Red</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="speaknow">
+                        <label>Speak Now</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="fearless">
+                        <label>Fearless</label>
+                    </span>
+                    <span class="checklistElement">
+                        <input type="checkbox" name="album" value="taylorswift">
+                        <label>Taylor Swift</label>
+                    </span>
+                  </section>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </form>
 </nav>
