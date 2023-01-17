@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: revert
+  font-family: revert;
 }
 
 body {
@@ -8,14 +8,65 @@ body {
   background-color: #c9e8fd;
 }
 
+::placeholder {
+  color: #526d85;
+  font-size: medium;
+}
+
+/* nav */
+
 nav {
   display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+nav section.topNav {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+nav section.topNav div {
+  display: flex;
+  justify-content: end;
+  column-gap: 20px;
+  padding-right: 30px;
+  margin-top: 20px;
+}
+
+nav section.topNav div a button {
+  display: grid;
+  justify-content: center;
+  outline: none;
+}
+
+nav section.topNav div a:hover {
+  text-decoration: none;
+}
+
+nav section.topNav div a button {
+  background: #526d85;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+  padding: 8px;
+  height: fit-content;
+  outline: none;
+}
+
+nav section.bottomNav {
+  display: flex;
   justify-content: center;
 }
 
-form {
+nav form {
   display: flex;
   justify-content: space-evenly;
+  width: 35%
 }
 
 section.searchBar {
@@ -30,6 +81,7 @@ form input.searchInput {
   font-family: revert;
   border-radius: 0;
   border: 0;
+  outline: none;
 }
 
 form button {
@@ -39,6 +91,7 @@ form button {
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
 }
 
 button.filter {
@@ -46,6 +99,7 @@ button.filter {
   color: white;
   font-size: medium;
   font-weight: 500;
+  outline: none;
 }
 
 button.filter p {
@@ -76,10 +130,12 @@ div.modal-footer button {
   border-radius: 0px;
   background-color: #b8acd1;
   border: 0px;
+  outline: none;
 }
 
 div.modal-footer button:hover {
   background-color: #6e618b;
+  outline: none;
 }
 
 input[type=checkbox] {
@@ -96,6 +152,58 @@ h1.title {
   font-size: xxx-large;
   font-weight: 700;
 }
+
+/* register, login */
+
+main.register {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+main.register form {
+  margin-top: 60px;
+  display: grid;
+  row-gap: 15px;
+  background: #8EABC1;
+  padding: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+main.register form button {
+  padding: 8px;
+  justify-self: center;
+  width: 40%;
+  margin-top: 18px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  outline: none;
+}
+
+main.register div {
+  display: grid;
+  row-gap: 8px;
+}
+
+main.register div label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-weight: 500;
+}
+
+main.register form input, main.register form input:focus {
+  padding: 6px 10px;
+  font-family: revert;
+  border-radius: 0;
+  border: 0;
+  font-size: medium;
+  background: white;
+  outline: none;
+}
+
+/* index */
 
 main.albumContainer {
   padding: 20px;
@@ -131,6 +239,8 @@ h2.resultsTitle {
   font-weight: 700;
   margin: 27px 0px
 }
+
+/* results */
 
 main.results {
   display: grid;
@@ -180,6 +290,8 @@ article p.album {
   font-weight: 500;
 }
 
+/* detail */
+
 main.detail {
   display: grid;
   grid-template-columns: 1fr;
@@ -216,7 +328,22 @@ h2.songTitle {
   font-weight: 700;
 }
 
+/* mobile */
+
 @media only screen and (max-width: 420px) {
+
+  nav section.topNav {
+    grid-template-columns: 1fr;
+  }
+
+  nav section.topNav div {
+    justify-content: center;
+    padding: 0px;
+  }
+
+  nav section.bottomNav form {
+    width: 90%
+  }
 
   main.albumContainer {
     grid-template-columns: 1fr;

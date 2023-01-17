@@ -3,6 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+
+const firebase = require('firebase');
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCIa8W5aaLTR6ONgaTHC_SxisDd2ZVftqw",
+  authDomain: "taylor-swift-reviews.firebaseapp.com",
+  projectId: "taylor-swift-reviews",
+  storageBucket: "taylor-swift-reviews.appspot.com",
+  messagingSenderId: "778688200720",
+  appId: "1:778688200720:web:d30b3d425228c3c922ca95"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 var indexRouter = require('./routes/index');
 
@@ -17,6 +32,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(async (req, res, next) => {
+  console.log(res.locals.currentUser)
+  res.locals.currentUser = firebase.auth().currentUser;
+  next();
+  })
 
 app.use('/', indexRouter);
 
