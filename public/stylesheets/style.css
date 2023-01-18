@@ -336,9 +336,35 @@ h2.songTitle {
     grid-template-columns: 1fr;
   }
 
+  nav section.topNav div#first {
+    display: none;
+  }
+
+  nav section.topNav div#last {
+    order: -1;
+    justify-content: center;
+    padding: 0;
+  }
+
   nav section.topNav div {
     justify-content: center;
     padding: 0px;
+  }
+
+  nav section.topNav div a button {
+    background: transparent;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #526D85;
+    font-weight: 500;
+    /* padding: 8px; */
+    /* height: fit-content; */
+    outline: none;
+    font-size: small;
+    width: 50px;
+    padding: 0;
   }
 
   nav section.bottomNav form {
