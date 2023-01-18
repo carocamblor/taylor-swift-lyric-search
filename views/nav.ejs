@@ -4,10 +4,16 @@
       <h1 class="title">Taylor Swift Lyric Search</h1>
       <div id="last">
         <% if (locals.currentUser) { %>
+          <a href="/"><button>
+            Home
+          </button></a>
           <a href="/logout"><button>
             Log Out
           </button></a>
-        <% } else { %> 
+        <% } else { %>
+          <a href="/"><button>
+            Home
+          </button></a>
           <a href="/login"><button>
             Log In
           </button></a>

@@ -22,6 +22,10 @@ nav {
   row-gap: 20px;
 }
 
+nav section.topNav a {
+  display: flex;
+}
+
 nav section.topNav {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -39,6 +43,7 @@ nav section.topNav div a button {
   display: grid;
   justify-content: center;
   outline: none;
+  align-self: center;
 }
 
 nav section.topNav div a:hover {
@@ -328,6 +333,94 @@ h2.songTitle {
   font-weight: 700;
 }
 
+/* comments */
+
+form.commentForm {
+  display: grid;
+  row-gap: 10px;
+  background: #8EABC1;
+  /* padding: 40px; */
+  width: 40%;
+  /* justify-content: center; */
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #526d85;
+  padding: 10px;
+}
+
+form.commentForm input.inputComment, form.commentForm input.inputComment:focus {
+  padding: 6px 10px;
+  font-family: revert;
+  border-radius: 0;
+  border: 0;
+  font-size: medium;
+  background: white;
+  outline: none;
+}
+
+form.commentForm button.submitComment {
+  padding: 4px;
+  justify-self: center;
+  width: 20%;
+  /* margin-top: 18px; */
+  color: #526d85;
+  font-weight: 500;
+  font-size: 16px;
+  outline: none;
+  background: white;
+}
+
+section.songComments {
+  background: #8EABC1;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+h3.commentsTitle {
+  text-align: center;
+  font-family: revert;
+  /* margin: 20px; */
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-weight: 700;
+  color: white;
+  font-size: 20px;
+}
+
+div.comments {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+}
+
+div.comments article.comment {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: start;
+  padding: 10px;
+  background: #526d85;
+  margin-bottom: 20px;
+}
+
+div.comments article.comment p.commentUsername {
+  font-weight: 500;
+  margin: 0px;
+  justify-content: start;
+  color: white;
+  padding-left: 5px;
+}
+
+div.comments article.comment p.commentText {
+  justify-content: start;
+  margin: 0px;
+  color: white;
+  padding-left: 5px;
+}
+
 /* mobile */
 
 @media only screen and (max-width: 420px) {
@@ -394,6 +487,18 @@ h2.songTitle {
 
   div.modal-footer button {
     width: 20%;
+  }
+
+  div.comments {
+    width: 90%;
+  }
+
+  form.commentForm {
+    width: 90%;
+  }
+
+  form.commentForm button.submitComment {
+    width: 30%;
   }
 
 }

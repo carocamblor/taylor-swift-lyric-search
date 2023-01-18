@@ -8,6 +8,10 @@ router.get('/', albumsController.list);
 
 router.get('/results', songsController.results);
 
+router.post('/song/:id', songsController.comment);
+
+//router.post('/album/:id/comment', albumsController.comment);
+
 router.get('/album/:id', albumsController.detail);
 
 router.get('/song/:id', songsController.detail);

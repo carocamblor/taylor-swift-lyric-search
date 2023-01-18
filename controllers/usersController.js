@@ -1,6 +1,8 @@
 const songs = require('../data/songs');
 const albums = require('../data/albums');
 const firebase = require('firebase')
+require('firebase/firestore');
+const db = firebase.firestore();
 
 var albumsController = {
     register: async(req, res) => {
@@ -14,7 +16,19 @@ var albumsController = {
                 // Signed in
                 var user = userCredential.user;
                 console.log(user);
-                res.redirect('/');
+                db.collection('users').add({
+                    username: username,
+                    owner: email,
+                    createdAt: Date.now()
+                })
+                
+                .then(response => 
+                    res.redirect('/')
+                    ) // esto va acá o en el then anterior
+                    
+                
+                .catch(e => 
+                    console.log('Error while creating user')) // esto está bien?
                 })
                 .catch((error) => {
                 var errorCode = error.code;
