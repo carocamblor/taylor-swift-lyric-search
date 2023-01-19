@@ -48,12 +48,11 @@ var albumsController = {
         if (req.method == 'GET') {
             res.render('login')
         } else {
+            req.session.userLoggedOn = true;
             const {email, password} = req.body;
             firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                req.session.userLoggedOn = true;
-
                 res.redirect('/');
                 firebase.auth().setPersistence(true ? fireauth.Auth.Persistence.LOCAL : fireauth.Auth.Persistence.SESSION)
             })

@@ -62,10 +62,10 @@ app.use( (req, res, next) => {
 })
 
 app.use(async (req, res, next) => { //Middleware de Session. Poner en vistas
- // if (req.session.userLoggedOn) {
+  if (req.session.userLoggedOn) {
 
     res.locals.userLoggedOn = true; //res.locals es varible que se comparte con las vistas
-  //}
+  }
   //res.locals.userLoggedOn = req.session.userLoggedOn;
   next();
 });
