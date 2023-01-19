@@ -34,8 +34,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(async (req, res, next) => {
-  console.log(res.locals.currentUser)
-  res.locals.currentUser = firebase.auth().currentUser;
+  let user = await firebase.auth().currentUser;
+  res.locals.currentUser = user;
   next();
   })
 
