@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const session = require('express-session');
+//const session = require('express-session');
 
 const firebase = require('firebase');
 
@@ -33,19 +33,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use( //configuracion de session. Nos agreega la variable req.session
+/*app.use( //configuracion de session. Nos agreega la variable req.session
   session({
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
     name: 'cookie',
     cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-    sameSite: 'none',
-    httpOnly: true,
+    maxAge: 60000,
+    secure: true,
+    store: new RedisStore(),
     },
   }),
-);
+);*/
 
 
 /* app.use( async (req, res, next) => {
