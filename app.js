@@ -40,7 +40,7 @@ app.use( //configuracion de session. Nos agreega la variable req.session
     saveUninitialized: true,
     name: 'cookie',
     cookie: {
-    maxAge: 1000 * 60 * 60 * 48,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
     sameSite: 'none',
     httpOnly: true,
     },
@@ -61,6 +61,13 @@ app.use( async (req, res, next) => {
  
   next();
 
+})
+
+app.use(async (req, res, next) => {
+  if (req.cookies.user !== undefined) {
+    res.locals.userLoggedOn = true;
+  }
+  next();
 })
 
 app.use( (req, res, next) => { //Middleware de Session. Poner en vistas
