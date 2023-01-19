@@ -49,12 +49,15 @@ app.use( //configuracion de session. Nos agreega la variable req.session
 
 
 app.use( async (req, res, next) => {
-  let user = await firebase.auth().currentUser
-  if (user) {
-    res.locals.loggedIn = true;
-  } else {
-    res.locals.loggedIn = false;
-  }
+  await firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+     // let user = firebase.auth().currentUser;
+      res.locals.loggedIn = true;
+    } else {
+      res.locals.loggedIn = false;
+    }
+  });
+ 
   next();
 
 })
