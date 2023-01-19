@@ -63,13 +63,24 @@ app.use( //configuracion de session. Nos agreega la variable req.session
 
 }) */
 
-app.use(async (req, res, next) => {
+/*app.use(async (req, res, next) => {
   console.log(req.cookies.user)
   if (req.cookies.user) {
     console.log(req.cookies.user)
     console.log('holaa')
     res.locals.loggedIn = true;
   }
+  next();
+})*/
+
+app.use(async (req, res, next) => {
+
+  let currentUser = await firebase.auth().currentUser;
+
+  console.log(currentUser);
+
+  res.locals.currentUser = currentUser;
+
   next();
 })
 
