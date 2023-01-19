@@ -77,7 +77,11 @@ app.use(async (req, res, next) => {
 
   let currentUser = await firebase.auth().currentUser;
 
-  console.log(currentUser);
+  if (currentUser) {
+    console.log('EL USUARIO ESTA LOGUEADOOO')
+  } else {
+    console.log('EL USUARIO NOOOOOOOOO ESTA LOGUEADOOO')
+  }
 
   res.locals.currentUser = currentUser;
 
