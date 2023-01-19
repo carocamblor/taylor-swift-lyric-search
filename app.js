@@ -48,22 +48,19 @@ app.use( //configuracion de session. Nos agreega la variable req.session
 );
 
 
-app.use( (req, res, next) => {
-
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-     // let user = firebase.auth().currentUser;
-      res.locals.loggedIn = true;
-    } else {
-      res.locals.loggedIn = false;
-    }
-  });
-  console.log(res.locals.loggedIn)
+app.use( async (req, res, next) => {
+  let user = await firebase.auth().currentUser
+  if (user) {
+    res.locals.loggedIn = true;
+  } else {
+    res.locals.loggedIn = false;
+  }
   next();
 
 })
 
 app.use( (req, res, next) => { //Middleware de Session. Poner en vistas
+
   if (req.session.userLoggedOn) {
 
     res.locals.userLoggedOn = true; //res.locals es varible que se comparte con las vistas
