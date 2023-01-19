@@ -48,20 +48,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 );*/
 
 
-/* app.use( async (req, res, next) => {
-  let currentUser = await firebase.auth().currentUser
-  await firebase.auth().onAuthStateChanged(function(user) {
-    if (user || currentUser) {
+app.use( async (req, res, next) => {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
      // let user = firebase.auth().currentUser;
-      res.locals.loggedIn = true;
+      res.locals.currentUser = user;
+      next();
     } else {
-      res.locals.loggedIn = false;
+      res.locals.currentUser = null;
+      next();
     }
   });
- 
-  next();
-
-}) */
+})
 
 /*app.use(async (req, res, next) => {
   console.log(req.cookies.user)
@@ -73,7 +71,7 @@ app.use(express.static(path.join(__dirname, 'public')));
   next();
 })*/
 
-app.use(async (req, res, next) => {
+/*app.use(async (req, res, next) => {
 
   let currentUser = await firebase.auth().currentUser;
   
@@ -86,7 +84,7 @@ app.use(async (req, res, next) => {
   res.locals.currentUser = currentUser;
 
   next();
-})
+})*/
 
 /* 
 app.use( (req, res, next) => { //Middleware de Session. Poner en vistas
