@@ -51,6 +51,7 @@ var albumsController = {
                 var user = userCredential.user;
                 res.locals.currentUser = user
                 res.redirect('/');
+                firebase.auth().setPersistence(true ? fireauth.Auth.Persistence.LOCAL : fireauth.Auth.Persistence.SESSION)
             })
             .catch((error) => {
             var errorCode = error.code;
