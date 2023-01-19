@@ -49,7 +49,7 @@ app.use( //configuracion de session. Nos agreega la variable req.session
 
 
 app.use( async (req, res, next) => {
-  let currentUser = firebase.auth().currentUser
+  let currentUser = await firebase.auth().currentUser
   await firebase.auth().onAuthStateChanged(function(user) {
     if (user || currentUser) {
      // let user = firebase.auth().currentUser;
