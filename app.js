@@ -48,7 +48,7 @@ app.use( //configuracion de session. Nos agreega la variable req.session
 );
 
 
-app.use( async (req, res, next) => {
+/* app.use( async (req, res, next) => {
   let currentUser = await firebase.auth().currentUser
   await firebase.auth().onAuthStateChanged(function(user) {
     if (user || currentUser) {
@@ -61,15 +61,19 @@ app.use( async (req, res, next) => {
  
   next();
 
-})
+}) */
 
 app.use(async (req, res, next) => {
-  if (req.cookies.user !== undefined) {
-    res.locals.userLoggedOn = true;
+  console.log(req.cookies.user)
+  if (req.cookies.user) {
+    console.log(req.cookies.user)
+    console.log('holaa')
+    res.locals.loggedIn = true;
   }
   next();
 })
 
+/* 
 app.use( (req, res, next) => { //Middleware de Session. Poner en vistas
 
   if (req.session.userLoggedOn) {
@@ -79,6 +83,8 @@ app.use( (req, res, next) => { //Middleware de Session. Poner en vistas
   //res.locals.userLoggedOn = req.session.userLoggedOn;
   next();
 });
+
+*/
 
 app.use('/', indexRouter);
 

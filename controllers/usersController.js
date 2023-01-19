@@ -25,7 +25,7 @@ var albumsController = {
                 
                 .then(response => {
                 
-                    req.session.userLoggedOn = true;
+                  //  req.session.userLoggedOn = true;
 
                     res.redirect('/')
                 }) // esto va acá o en el then anterior
@@ -53,7 +53,7 @@ var albumsController = {
             firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                req.session.userLoggedOn = true;
+              //  req.session.userLoggedOn = true;
                 res.cookie('user', true, { maxAge: 1000 * 60 * 60 * 24 * 30 })
                 res.redirect('/');
                // firebase.auth().setPersistence(true ? fireauth.Auth.Persistence.LOCAL : fireauth.Auth.Persistence.SESSION)
@@ -69,7 +69,7 @@ var albumsController = {
     logout: function (req, res) {
         firebase.auth().signOut().then(() => {
             //locals.currentUser = {}
-            req.session.userLoggedOn = null;
+           // req.session.userLoggedOn = null;
             res.clearCookie('user');
             res.redirect('/');
             }).catch((error) => {
