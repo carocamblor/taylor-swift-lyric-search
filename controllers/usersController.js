@@ -16,7 +16,7 @@ var albumsController = {
                 // Signed in
                 var user = userCredential.user;
                 console.log(user);
-                res.cookie('user', true, { maxAge: 1000 * 60 * 60 * 24 * 30 })
+              //  res.cookie('user', true, { maxAge: 1000 * 60 * 60 * 24 * 30 })
                 db.collection('users').add({
                     username: username,
                     owner: email,
@@ -54,7 +54,7 @@ var albumsController = {
             .then((userCredential) => {
                 var user = userCredential.user;
               //  req.session.userLoggedOn = true;
-                res.cookie('user', true, { maxAge: 1000 * 60 * 60 * 24 * 30 })
+               // res.cookie('user', true, { maxAge: 1000 * 60 * 60 * 24 * 30 })
              //   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
                 res.redirect('/');
                 
@@ -71,7 +71,7 @@ var albumsController = {
         firebase.auth().signOut().then(() => {
             //locals.currentUser = {}
            // req.session.userLoggedOn = null;
-            res.clearCookie('user');
+           // res.clearCookie('user');
             res.redirect('/');
             }).catch((error) => {
             // An error happened.
