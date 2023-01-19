@@ -13,7 +13,7 @@
       <section class="songComments">
         <h3 class="commentsTitle">Comment Section</h3>
         
-        <% if(locals.currentUser){ %> 
+        <% if(locals.userLoggedOn && userLoggedOn) { %> 
         <form class="commentForm" method="POST">
           <input class="inputComment" required type="text" name="comment" placeholder="Share your thoughts">
           <button class="submitComment" type="submit">Comment</button>

@@ -33,11 +33,41 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(async (req, res, next) => {
-  let user = await firebase.auth().currentUser;
-  res.locals.currentUser = user;
+app.use( //configuracion de session. Nos agreega la variable req.session
+  session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7, //da 7 dias y 1.000 segundos
+    },
+  }),
+);
+
+
+app.use( (req, res, next) => {
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+     // let user = firebase.auth().currentUser;
+      res.locals.loggedIn = true;
+    } else {
+      res.locals.loggedIn = false;
+    }
+  });
+  console.log(res.locals.loggedIn)
   next();
-  })
+
+})
+
+app.use(async (req, res, next) => { //Middleware de Session. Poner en vistas
+  if (req.session.userLoggedOn) {
+
+    res.locals.userLoggedOn = true; //res.locals es varible que se comparte con las vistas
+  }
+  //res.locals.userLoggedOn = req.session.userLoggedOn;
+  next();
+});
 
 app.use('/', indexRouter);
 

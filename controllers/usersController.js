@@ -22,9 +22,12 @@ var albumsController = {
                     createdAt: Date.now()
                 })
                 
-                .then(response => 
+                .then(response => {
+                
+                    req.session.userLoggedOn = true;
+
                     res.redirect('/')
-                    ) // esto va acá o en el then anterior
+                }) // esto va acá o en el then anterior
                     
                 
                 .catch(e => 
@@ -49,13 +52,15 @@ var albumsController = {
             firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                res.locals.currentUser = user
+                req.session.userLoggedOn = true;
+
                 res.redirect('/');
                 firebase.auth().setPersistence(true ? fireauth.Auth.Persistence.LOCAL : fireauth.Auth.Persistence.SESSION)
             })
             .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
+            console.log(errorMessage)
             });
             
         }
