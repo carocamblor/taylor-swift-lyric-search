@@ -34,14 +34,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use( //configuracion de session. Nos agreega la variable req.session
-  session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7, //da 7 dias y 1.000 segundos
-    },
-  }),
+
+    session({
+        name: 'sessionID',
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 7,
+            sameSite: 'none', // in order to response to both first-party and cross-site requests
+            secure: 'auto', // it should set automatically to secure if is https.
+            httpOnly: true
+        },
+        resave: false,
+        secret: 'secret',
+        saveUninitialized: false,
+    })
 );
 
 

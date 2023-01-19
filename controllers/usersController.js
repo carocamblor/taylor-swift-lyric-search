@@ -68,6 +68,7 @@ var albumsController = {
     logout: function (req, res) {
         firebase.auth().signOut().then(() => {
             //locals.currentUser = {}
+            req.session.userLoggedOn = false;
             res.redirect('/');
             }).catch((error) => {
             // An error happened.
