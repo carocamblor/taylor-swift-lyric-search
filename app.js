@@ -35,12 +35,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use( //configuracion de session. Nos agreega la variable req.session
   session({
-    
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
+    name: 'cookie',
     cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7, //da 7 dias y 1.000 segundos
+    maxAge: 1000 * 60 * 60 * 48,
+    sameSite: 'none',
+    httpOnly: true,
     },
   }),
 );
@@ -61,7 +63,7 @@ app.use( (req, res, next) => {
 
 })
 
-app.use(async (req, res, next) => { //Middleware de Session. Poner en vistas
+app.use( (req, res, next) => { //Middleware de Session. Poner en vistas
   if (req.session.userLoggedOn) {
 
     res.locals.userLoggedOn = true; //res.locals es varible que se comparte con las vistas
