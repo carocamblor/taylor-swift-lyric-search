@@ -97,6 +97,8 @@ var songsController = {
     },
     comment: async function (req, res) {
 
+        console.log(firebase.auth().currentUser)
+
         let docs = await db.collection("users").where("owner", "==", firebase.auth().currentUser.email).get()
 
         let users = [];

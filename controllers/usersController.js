@@ -26,7 +26,7 @@ var albumsController = {
                 .then(response => {
                 
                   //  req.session.userLoggedOn = true;
-
+                  //firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
                     res.redirect('/')
                 }) // esto va acá o en el then anterior
                     
@@ -45,24 +45,33 @@ var albumsController = {
             }
         }
     },
-    login: async(req, res) => {
+    login: (req, res) => {
         if (req.method == 'GET') {
             res.render('login')
         } else {
             const {email, password} = req.body;
-            firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                var user = userCredential.user;
-              //  req.session.userLoggedOn = true;
-                res.cookie('user', true, { maxAge: 1000 * 60 * 60 * 24 * 30 })
-                res.redirect('/');
-               // firebase.auth().setPersistence(true ? fireauth.Auth.Persistence.LOCAL : fireauth.Auth.Persistence.SESSION)
-            })
-            .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorMessage)
-            });
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+                .then(() => {
+                    firebase.auth().signInWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        var user = userCredential.user;
+                      //  req.session.userLoggedOn = true;
+                        res.cookie('user', true, { maxAge: 1000 * 60 * 60 * 24 * 30 })
+                     //   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+                        res.redirect('/');
+                        
+                    })
+                    .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage)
+                    });
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage)
+                    });
             
         }
     },
