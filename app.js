@@ -36,10 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(async (req, res, next) => {
 
-  const delay = ms => new Promise(res => setTimeout(res, ms));
-
-  await delay(5000);
-
   let currentUser = await firebase.auth().currentUser;
   
   if (currentUser) {

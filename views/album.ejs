@@ -20,6 +20,9 @@
           <a href="/song/<%= song.id %>" class="songLink"><p class="songTitle"><%= album.songs.indexOf(song)+1 + '. ' + song.title %></p></a>
         <% } %>
       </section>
+
+      <%- include('partials/comments') %>
+
     </main>
 </body>
 </html>

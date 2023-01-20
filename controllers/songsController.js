@@ -16,11 +16,11 @@ var songsController = {
 
         docs.forEach(doc => comments.push(doc.data()))
 
-        res.render('song', {song, comments})
+        let commentAction = '/song/'+song.id+'/comment';
+
+        res.render('song', {song, comments, commentAction})
     },
     comment: async function (req, res) {
-
-        console.log(firebase.auth().currentUser)
 
         let docs = await db.collection("users").where("owner", "==", firebase.auth().currentUser.email).get()
 
