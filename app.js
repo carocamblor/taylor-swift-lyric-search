@@ -34,70 +34,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*app.use( //configuracion de session. Nos agreega la variable req.session
-  session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: true,
-    name: 'cookie',
-    cookie: {
-    maxAge: 60000,
-    secure: true,
-    store: new RedisStore(),
-    },
-  }),
-);*/
-
-
-app.use((req, res, next) => {
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-     // let user = firebase.auth().currentUser;
-      res.locals.currentUser = user;
-    } else {
-      res.locals.currentUser = null;
-    }
-  });
-  next();
-})
-
-/*app.use(async (req, res, next) => {
-  console.log(req.cookies.user)
-  if (req.cookies.user) {
-    console.log(req.cookies.user)
-    console.log('holaa')
-    res.locals.loggedIn = true;
-  }
-  next();
-})*/
-
-/*app.use(async (req, res, next) => {
+app.use(async (req, res, next) => {
 
   let currentUser = await firebase.auth().currentUser;
   
   if (currentUser) {
-    console.log('EL USUARIO ESTA LOGUEADOOO')
+
+    console.log('The user is logged in')
+
   } else {
-    console.log('EL USUARIO NOOOOOOOOO ESTA LOGUEADOOO')
+
+    console.log('The user is NOT logged in')
+
   }
 
   res.locals.currentUser = currentUser;
 
   next();
-})*/
-
-/* 
-app.use( (req, res, next) => { //Middleware de Session. Poner en vistas
-
-  if (req.session.userLoggedOn) {
-
-    res.locals.userLoggedOn = true; //res.locals es varible que se comparte con las vistas
-  }
-  //res.locals.userLoggedOn = req.session.userLoggedOn;
-  next();
-});
-
-*/
+})
 
 app.use('/', indexRouter);
 app.use('/song', songsRouter);
