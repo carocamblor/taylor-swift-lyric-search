@@ -1,0 +1,41 @@
+<section class="songComments">
+
+    <h3 class="commentsTitle">Comment Section</h3>
+    
+    <% if(locals.currentUser && currentUser) { %> 
+
+        <form class="commentForm" method="POST" action="/song/<%= song.id %>/comment">
+        <input class="inputComment" required type="text" name="comment" placeholder="Share your thoughts">
+        <button class="submitComment" type="submit">Comment</button>
+        </form>
+
+    <% } else { %>
+
+        <p class="commentText" id="loginToComment">Log in to your account to leave a comment :)</p>
+
+    <% } %> 
+    
+    <div class="comments">
+
+        <% if(comments.lenght > 0) { %> 
+
+                <% for (const comment of comments) { %>
+
+                    <article class="comment">
+                        <p class="commentUsername"><%= comment.username %></p>
+                        <p class="commentText"><%= comment.comment %></p>
+                    </article>
+
+                <% } %>
+
+        <% } else { %>
+
+            <article class="comment">
+                <p class="commentText" id="noCommentsYet">No comments yet :(</p>
+            </article>
+
+        <% } %>
+
+    </div>
+
+</section>

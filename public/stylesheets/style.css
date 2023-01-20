@@ -380,12 +380,20 @@ section.songComments {
 h3.commentsTitle {
   text-align: center;
   font-family: revert;
-  /* margin: 20px; */
   margin-top: 20px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
   font-weight: 700;
   color: white;
   font-size: 20px;
+}
+
+p#noCommentsYet {
+  display: flex;
+  justify-content: center;
+}
+
+p#loginToComment {
+  color: white;
 }
 
 div.comments {

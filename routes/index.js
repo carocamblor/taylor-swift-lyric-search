@@ -1,25 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var songsController = require('../controllers/songsController'); 
-var albumsController = require('../controllers/albumsController');
-var usersController = require('../controllers/usersController')
+var indexController = require('../controllers/indexController');
 
-router.get('/', albumsController.list);
+router.get('/', indexController.index);
 
-router.get('/results', songsController.results);
+router.get('/results', indexController.results);
 
-router.post('/song/:id', songsController.comment);
+router.all('/register', indexController.register);
 
-//router.post('/album/:id/comment', albumsController.comment);
+router.all('/login', indexController.login);
 
-router.get('/album/:id', albumsController.detail);
-
-router.get('/song/:id', songsController.detail);
-
-router.all('/register', usersController.register);
-
-router.all('/login', usersController.login);
-
-router.get('/logout', usersController.logout);
+router.get('/logout', indexController.logout);
 
 module.exports = router;

@@ -1,6 +1,5 @@
 let songs = require('./songs');
 
-
 let albums = [
     {
         title: 'Midnights',

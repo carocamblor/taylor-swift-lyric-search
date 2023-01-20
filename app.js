@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-//const session = require('express-session');
 
 const firebase = require('firebase');
 
@@ -20,6 +19,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var indexRouter = require('./routes/index');
+var albumsRouter = require('./routes/albums');
+var songsRouter = require('./routes/songs');
 
 var app = express();
 
@@ -48,17 +49,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 );*/
 
 
-app.use( async (req, res, next) => {
+app.use((req, res, next) => {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
      // let user = firebase.auth().currentUser;
       res.locals.currentUser = user;
-      next();
     } else {
       res.locals.currentUser = null;
-      next();
     }
   });
+  next();
 })
 
 /*app.use(async (req, res, next) => {
@@ -100,6 +100,8 @@ app.use( (req, res, next) => { //Middleware de Session. Poner en vistas
 */
 
 app.use('/', indexRouter);
+app.use('/song', songsRouter);
+app.use('/album', albumsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

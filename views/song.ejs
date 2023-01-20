@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <%- include('head') %>
+  <%- include('partials/head') %>
 <body>
-    <%- include('nav') %>
+    <%- include('partials/nav') %>
     <main class="song">
           <h2 class="songTitle"><%= song.title %></h2>
       <section class="songLyrics">
@@ -10,25 +10,7 @@
           <p class="lyric"><%= lyric %></p>
         <% } %>
       </section>
-      <section class="songComments">
-        <h3 class="commentsTitle">Comment Section</h3>
-        
-        <% if(locals.currentUser && currentUser) { %> 
-        <form class="commentForm" method="POST">
-          <input class="inputComment" required type="text" name="comment" placeholder="Share your thoughts">
-          <button class="submitComment" type="submit">Comment</button>
-        </form>
-        <% } %>
-
-        <div class="comments">
-          <% for (const comment of comments) { %>
-            <article class="comment">
-              <p class="commentUsername"><%= comment.username %></p>
-              <p class="commentText"><%= comment.comment %></p>
-            </article>
-          <% } %>
-        </div>
-      </section>
+      <%- include('partials/comments') %>
     </main>
 </body>
 </html>
