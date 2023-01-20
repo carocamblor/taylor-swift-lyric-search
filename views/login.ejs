@@ -4,26 +4,44 @@
 <body>
     <%- include('partials/nav') %>
     <main class="register">
-    
-      <form method="POST">
+
+        <% if (locals.currentUser && currentUser) { %>
+
+          <form action="/logout">
+
+            <div>
+              <p class="registerError">You are already logged in.</p>
+            </div>
+
+            <a class="registerLogout"><button type="submit">Log Out</button></a>
+
+          </form>
         
-        <% if (error) { %>
-          <div>
-            <p class="registerError"><%= error %></p>
-          </div>
+        <% } else { %>
+
+          <form method="POST">
+        
+            <% if (error) { %>
+              <div>
+                <p class="registerError"><%= error %></p>
+              </div>
+            <% } %>
+
+            <div>
+              <label>Email</label>
+              <input required type="email" name="email" placeholder="name@example.com">
+            </div>
+
+            <div>
+              <label>Password</label>
+              <input required type="password" name="password" placeholder="Password">
+            </div>
+
+            <button type="submit">Log In</button>
+
+          </form>
+
         <% } %>
-
-        <div>
-          <label>Email</label>
-          <input required type="email" name="email" placeholder="name@example.com">
-        </div>
-
-        <div>
-          <label>Password</label>
-          <input required type="password" name="password" placeholder="Password">
-        </div>
-
-        <button type="submit">Log In</button>
 
       </form>
       

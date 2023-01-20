@@ -217,6 +217,11 @@ p.registerError {
   padding: 0;
 }
 
+a.registerLogout {
+  display: flex;
+  justify-content: center;
+}
+
 /* index */
 
 main.albumContainer {
