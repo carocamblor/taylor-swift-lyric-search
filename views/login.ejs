@@ -6,17 +6,25 @@
     <main class="register">
     
       <form method="POST">
+        
+        <% if (error) { %>
+          <div>
+            <p class="registerError"><%= error %></p>
+          </div>
+        <% } %>
+
         <div>
           <label>Email</label>
           <input required type="email" name="email" placeholder="name@example.com">
         </div>
+
         <div>
           <label>Password</label>
           <input required type="password" name="password" placeholder="Password">
         </div>
-        <button type="submit">
-          Log In
-        </button>
+
+        <button type="submit">Log In</button>
+
       </form>
       
     </main>

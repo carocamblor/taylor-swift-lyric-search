@@ -90,7 +90,9 @@ var albumsController = {
 
         if (req.method == 'GET') {
 
-            res.render('register')
+            let error = false;
+
+            res.render('register', {error});
 
         } else {
 
@@ -102,6 +104,7 @@ var albumsController = {
                 .then((userCredential) => {
                     
                     var user = userCredential.user;
+
                     db.collection('users').add({
                         username: username,
                         owner: email,
@@ -111,19 +114,23 @@ var albumsController = {
                         // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL) --> No funciona en este environment
                         res.redirect('/')
                     })
-                    .catch(e => 
-                        console.log('Error while creating user'))
+                    .catch(e => {
+                        let error = 'Error while creating user';
+                        res.render('register', {error});
                     })
 
+                })
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log(error.message);
+                    res.render('register', {error});
                 });
 
-            } catch(e) {
-                res.redirect('register');
-                console.log(e)
+            } catch(error) {
+
+                res.redirect('register', {error});
+
             }
 
         }
@@ -133,7 +140,9 @@ var albumsController = {
 
         if (req.method == 'GET') {
 
-            res.render('login')
+            let error = false;
+
+            res.render('login', {error});
 
         } else {
 
@@ -146,9 +155,7 @@ var albumsController = {
                 res.redirect('/');
             })
             .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(errorMessage)
+                res.render('login', {error})
             });
             
         }

@@ -1,4 +1,3 @@
-const { results } = require("../controllers/indexController")
 
 const songs = {
     list: [
