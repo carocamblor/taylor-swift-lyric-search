@@ -36,6 +36,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(async (req, res, next) => {
 
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      console.log('SIIIIIIIIIIIII')
+    } else {
+      console.log('NOOOOOOOOOOOOOO')
+    }
+  })
+
   let currentUser = await firebase.auth().currentUser;
   
   if (currentUser) {
