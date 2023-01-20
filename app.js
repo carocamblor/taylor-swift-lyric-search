@@ -36,22 +36,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(async (req, res, next) => {
 
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+
+  await delay(5000);
+
   let currentUser = await firebase.auth().currentUser;
   
   if (currentUser) {
-
     console.log('The user is logged in')
-
   } else {
-
     console.log('The user is NOT logged in')
-
   }
 
   res.locals.currentUser = currentUser;
 
   next();
+
 })
+
 
 app.use('/', indexRouter);
 app.use('/song', songsRouter);
