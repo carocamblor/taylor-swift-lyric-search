@@ -117,7 +117,7 @@ var albumsController = {
                         createdAt: Date.now()
                     })
                     .then(response => {
-                        // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL) --> No funciona en este environment
+                        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
                         res.redirect('/')
                     })
                     .catch(e => {
@@ -135,7 +135,7 @@ var albumsController = {
                 });
 
             } catch(error) {
-                
+
                 let currentUser = firebase.auth().currentUser;
                 res.redirect('register', {error, currentUser});
 
@@ -161,7 +161,7 @@ var albumsController = {
             firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL) --> Doesn't work in this environment :(
+                firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
                 res.redirect('/');
             })
             .catch((error) => {
