@@ -8,6 +8,8 @@ const db = firebase.firestore();
 var songsController = {
     detail: async function (req, res) {
 
+        let currentUser = firebase.auth().currentUser;
+
         let song = songs.list.filter((song) => song.id == req.params.id)[0]
 
         let docs = await db.collection("songsComments").where("songid", "==", req.params.id).get()
@@ -18,7 +20,7 @@ var songsController = {
 
         let commentAction = '/song/'+song.id+'/comment';
 
-        res.render('song', {song, comments, commentAction})
+        res.render('song', {song, comments, commentAction, currentUser})
     },
     comment: async function (req, res) {
 

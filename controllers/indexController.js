@@ -7,10 +7,14 @@ const db = firebase.firestore();
 var albumsController = {
     index: (req, res) => {
 
-        res.render('index', {albums})
+        let currentUser = firebase.auth().currentUser;
+
+        res.render('index', {albums, currentUser})
 
     },
     results: function (req, res) {
+
+        let currentUser = firebase.auth().currentUser;
 
         if (!req.query.album) {
 
@@ -33,7 +37,7 @@ var albumsController = {
 
             }
     
-            res.render('results', { results, search: req.query.search})
+            res.render('results', { results, search: req.query.search, currentUser})
 
         } else {
 
@@ -58,7 +62,7 @@ var albumsController = {
                     }
                     
                 }
-                res.render('results', { results, search: req.query.search, albums: albumsSearch, length: albumsSearch.length})
+                res.render('results', { results, search: req.query.search, albums: albumsSearch, length: albumsSearch.length, currentUser})
 
             } else {
                 
@@ -80,7 +84,7 @@ var albumsController = {
                     
                 }
 
-                res.render('results', { results, search: req.query.search, albums: albumsSearch})
+                res.render('results', { results, search: req.query.search, albums: albumsSearch, currentUser})
             }
 
         }
@@ -90,9 +94,11 @@ var albumsController = {
 
         if (req.method == 'GET') {
 
+            let currentUser = firebase.auth().currentUser;
+
             let error = false;
 
-            res.render('register', {error});
+            res.render('register', {error, currentUser});
 
         } else {
 
@@ -116,7 +122,7 @@ var albumsController = {
                     })
                     .catch(e => {
                         let error = 'Error while creating user';
-                        res.render('register', {error});
+                        res.render('register', {error, currentUser});
                     })
 
                 })
@@ -124,12 +130,14 @@ var albumsController = {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log(error.message);
-                    res.render('register', {error});
+                    let currentUser = firebase.auth().currentUser;
+                    res.render('register', {error, currentUser});
                 });
 
             } catch(error) {
-
-                res.redirect('register', {error});
+                
+                let currentUser = firebase.auth().currentUser;
+                res.redirect('register', {error, currentUser});
 
             }
 
@@ -140,9 +148,11 @@ var albumsController = {
 
         if (req.method == 'GET') {
 
+            let currentUser = firebase.auth().currentUser;
+
             let error = false;
 
-            res.render('login', {error});
+            res.render('login', {error, currentUser});
 
         } else {
 
@@ -155,7 +165,8 @@ var albumsController = {
                 res.redirect('/');
             })
             .catch((error) => {
-                res.render('login', {error})
+                let currentUser = firebase.auth().currentUser;
+                res.render('login', {error, currentUser})
             });
             
         }

@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(async (req, res, next) => {
+/*app.use(async (req, res, next) => {
 
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -56,7 +56,7 @@ app.use(async (req, res, next) => {
 
   next();
 
-})
+})*/
 
 
 app.use('/', indexRouter);

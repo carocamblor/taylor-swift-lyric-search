@@ -6,6 +6,8 @@ const db = firebase.firestore();
 var albumsController = {
     detail: async function (req, res) {
 
+        let currentUser = firebase.auth().currentUser;
+
         let album = albums.filter((album) => album.id == req.params.id)[0]
 
         let docs = await db.collection("albumsComments").where("albumid", "==", req.params.id).get()
@@ -16,7 +18,7 @@ var albumsController = {
 
         let commentAction = '/album/'+album.id+'/comment';
 
-        res.render('album', {album, comments, commentAction})
+        res.render('album', {album, comments, commentAction, currentUser})
 
     },
     comment: async function (req, res) {
