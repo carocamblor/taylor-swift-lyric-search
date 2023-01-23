@@ -150,6 +150,8 @@ var albumsController = {
 
             let currentUser = firebase.auth().currentUser;
 
+            console.log(currentUser);
+
             let error = false;
 
             res.render('login', {error, currentUser});
@@ -162,10 +164,13 @@ var albumsController = {
             .then((userCredential) => {
                 var user = userCredential.user;
                 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+                console.log('SUCCESS LOG IN');
                 res.redirect('/');
             })
             .catch((error) => {
                 let currentUser = firebase.auth().currentUser;
+                console.log(currentUser);
+                console.log('ERROR LOG IN');
                 res.render('login', {error, currentUser})
             });
             
