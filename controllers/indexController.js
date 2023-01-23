@@ -98,7 +98,7 @@ var albumsController = {
 
             let error = false;
 
-            res.render('register', {error, currentUser});
+            res.render('error', {error, currentUser});
 
         } else {
 
@@ -117,7 +117,6 @@ var albumsController = {
                         createdAt: Date.now()
                     })
                     .then(response => {
-                        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
                         res.redirect('/')
                     })
                     .catch(e => {
@@ -163,7 +162,6 @@ var albumsController = {
             firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 var user = userCredential.user;
-                firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
                 console.log('SUCCESS LOG IN');
                 res.redirect('/');
             })
@@ -171,7 +169,7 @@ var albumsController = {
                 let currentUser = firebase.auth().currentUser;
                 console.log(currentUser);
                 console.log('ERROR LOG IN');
-                res.render('login', {error, currentUser})
+                res.render('error', {error, currentUser})
             });
             
         }
